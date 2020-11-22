@@ -2026,4 +2026,15 @@ if __name__ == "__main__":  # для того чтобы при импорте �
     copy_file("new_f", "new_f2")
     copy_file("text.dat", "text1.dat")
     save_info("abc")
+
+################################
+
+catalog = {}
+for i in range(2):
+    a = str(input("наименование>>"))
+    b = int(input("количество>>"))
+    catalog[a] = b
+for k in catalog:
+    print(k, ":", catalog[k])
+
 """
