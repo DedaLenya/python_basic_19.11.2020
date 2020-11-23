@@ -2037,4 +2037,16 @@ for i in range(2):
 for k in catalog:
     print(k, ":", catalog[k])
 
+
+
+# todo f" f' f строка
+ooks_in_list = ["gogo" , "tolsyoy"]
+
+for index in range(len(books_in_list)):
+    print(f"В пакете есть книга {books_in_list[index]} с индексом {index}")
+
 """
+
+books_in_list = ["gogo" , "tolsyoy"]
+books_in_list.insert(2, "dfsdfsa")
+#  todo insert вставить
