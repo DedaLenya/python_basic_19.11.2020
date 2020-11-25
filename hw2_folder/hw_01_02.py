@@ -3,8 +3,5 @@
 Элементы списка можно не запрашивать у пользователя, а указать явно, в программе.
 """
 value = (786, 3.14, "text", True, None)
-print(type(value[0]))
-print(type(value[1]))
-print(type(value[2]))
-print(type(value[3]))
-print(type(value[4]))
+for elem in value:
+    print(f"Элемент {elem} это тим данных {type(elem)}")

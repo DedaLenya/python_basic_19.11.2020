@@ -14,6 +14,6 @@ print("**Если слово было более 10 букв, оно было \"
 
 
 # вариант 2, через enumerate
-words = input("words separated by a space>>").split()
+words = input("вводит строку из нескольких слов, разделённых пробелами>>").split()
 for elem, item in enumerate(words, 1):
     print(elem, item[:10])
