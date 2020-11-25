@@ -1885,7 +1885,7 @@ def save_info(message):
 
 save_info("abc")
 
-"""
+
 # -----------------------------
 # Написанный файловый менеджер
 
@@ -2026,3 +2026,27 @@ if __name__ == "__main__":  # для того чтобы при импорте �
     copy_file("new_f", "new_f2")
     copy_file("text.dat", "text1.dat")
     save_info("abc")
+
+################################
+
+catalog = {}
+for i in range(2):
+    a = str(input("наименование>>"))
+    b = int(input("количество>>"))
+    catalog[a] = b
+for k in catalog:
+    print(k, ":", catalog[k])
+
+
+
+# todo f" f' f строка
+ooks_in_list = ["gogo" , "tolsyoy"]
+
+for index in range(len(books_in_list)):
+    print(f"В пакете есть книга {books_in_list[index]} с индексом {index}")
+
+"""
+
+books_in_list = ["gogo" , "tolsyoy"]
+books_in_list.insert(2, "dfsdfsa")
+#  todo insert вставить
