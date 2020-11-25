@@ -17,12 +17,13 @@ books_in_list.insert(2, "dfsdfsa")
 
 
 for index in range(len(books_in_list)):
-    print(f"В пакете есть книга {books_in_list[index]} с индексом {index}")
+    # print(f"В пакете есть книга {books_in_list[index]} с индексом {index}")
+    print(f"{index}")
 
 
-num = input("введите символ или число")
-for el in num:
-    print("El: ", el)
+# num = input("введите символ или число")
+# for el in num:
+#     # print("El: ", el)
 
 
 
