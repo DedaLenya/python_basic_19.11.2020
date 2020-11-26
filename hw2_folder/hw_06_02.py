@@ -51,6 +51,6 @@ for i in range(count):
 for i in goods_all:
     print(f"{count1+1}{i}")
     count1 += 1
-# второе условие задания - Аналитика словоря
+# второе условие задания - Аналитика словаря
 for key, val in dict.items(goods_dict1):
     print(f"{key} {val}")
