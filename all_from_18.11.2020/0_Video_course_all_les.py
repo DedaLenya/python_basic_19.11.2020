@@ -2045,8 +2045,43 @@ ooks_in_list = ["gogo" , "tolsyoy"]
 for index in range(len(books_in_list)):
     print(f"В пакете есть книга {books_in_list[index]} с индексом {index}")
 
-"""
+
 
 books_in_list = ["gogo" , "tolsyoy"]
 books_in_list.insert(2, "dfsdfsa")
 #  todo insert вставить
+
+
+# 28,11,2020
+# todo словарь словарю словаря перебор по значению
+dict_some = {
+    "a":2,
+    "b":4,
+    "c":5
+}
+dict_some["добавляем"] = 99
+for key , value in dict_some.items():
+    print(key, value, sep="____разделитель____")
+
+print(dict_some.keys()) # получаем значение ключей
+print(dict_some.values()) # получаем значения
+
+# проверка на да нет в одной строке
+while True:
+    next = input("Добавить ? Да/Нет\n>>")
+    if next.lower() in ("да", "нет"):
+        next = next.lower() == "да"
+        break
+    else:
+        print("Неверный ввод, повторите")
+
+
+# Перебор по словарю добавление в функцию набивка функции
+def directory(**kwargs):
+    print(kwargs)
+    for key, value in kwargs.items():
+        print("{} is {}".format(key, value))
+
+
+directory(name="Deda", surname="Lenya", year="1981", city="Екатеринбург", email="ip66net", tel="0006")
+"""
