@@ -9,4 +9,4 @@ def my_func(*args):
     return args[-1] + args[-2]
 
 
-my_func(7, 9, 8)
+print(my_func(7, 9, 8))
