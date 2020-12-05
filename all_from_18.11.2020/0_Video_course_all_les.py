@@ -1885,7 +1885,7 @@ def save_info(message):
 
 save_info("abc")
 
-"""
+
 # -----------------------------
 # Написанный файловый менеджер
 
@@ -2026,3 +2026,65 @@ if __name__ == "__main__":  # для того чтобы при импорте �
     copy_file("new_f", "new_f2")
     copy_file("text.dat", "text1.dat")
     save_info("abc")
+
+
+
+from itertools import cycle
+from collections import defaultdict
+
+def anagram_search(itr_obj: list):
+    pre_result = {}
+    for itm in itr_obj:
+        try:
+            pre_result[''.join(sorted(itm))].append(itm)
+        except KeyError:
+            pre_result[''.join(sorted(itm))] = [itm]
+        return list(pre_result.values())
+
+
+test = ['hello', 'dear', 'gb', 'olelh','bg', 'arde']
+# result =[['hello','olelh'], ['dear', 'dear'], ['gb',]]
+res = anagram_search(test)
+print(res)
+
+
+# todo Генератор словаря списка Романчук !!!!!!!!!!!!!!
+a = [2, 3, 4, 11, 13, 12, 4, 4, 7, 3, 8, 12, 22, 18, 12]
+result = {idx: itm for idx, itm in enumerate(a) if not itm & 1}
+# {idx: - если это убрать, будет 'set'
+print(result)
+
+"""
+
+
+"""
+
+# два итератора список счетчик и цикл повторающийся нужное количество раз
+import itertools
+
+
+def start_sinish_number(s, f):
+
+    for el in itertools.count(s):
+        if el > f:
+            break
+        else:
+            print(el)
+
+
+start_sinish_number(3, 10)
+
+
+def count_elem_list(vol):
+
+    count = 0
+    for el in itertools.cycle(['повторяющий', 'элементы', 'некоторого', 'списка', 'определенного', 'заранее']):
+        if count > vol - 1:
+            break
+        print(el)
+        count += 1
+
+
+count_elem_list(10)
+
+"""
