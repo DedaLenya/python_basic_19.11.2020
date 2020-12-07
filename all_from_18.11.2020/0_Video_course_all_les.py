@@ -2088,3 +2088,38 @@ def count_elem_list(vol):
 count_elem_list(10)
 
 """
+
+############ Обработка исключений try except
+"""
+def division(dividend, divider):
+    return dividend / divider
+
+try:
+    a = int(input())
+    z = int(input())
+    result = division(a, z)
+    print(result)
+except ValueError:
+    print("Вы ввели не число")
+except ZeroDivisionError:
+    print('Второе число не может быть нулем')
+    
+
+
+"""
+
+########################## файлы file ############################################
+
+# это примеры LETPY
+
+# f = open('example.txt')
+# content = f.read()
+# print(content)
+
+def funck_read(f):
+    f = open(f)
+    content = f.read()
+    print(content)
+    return f
+
+funck_read("example.txt")
