@@ -2027,99 +2027,394 @@ if __name__ == "__main__":  # для того чтобы при импорте �
     copy_file("text.dat", "text1.dat")
     save_info("abc")
 
+################################
+
+catalog = {}
+for i in range(2):
+    a = str(input("наименование>>"))
+    b = int(input("количество>>"))
+    catalog[a] = b
+for k in catalog:
+    print(k, ":", catalog[k])
+
+################################
+
+catalog = {}
+for i in range(2):
+    a = str(input("наименование>>"))
+    b = int(input("количество>>"))
+    catalog[a] = b
+for k in catalog:
+    print(k, ":", catalog[k])
 
 
-from itertools import cycle
-from collections import defaultdict
 
-def anagram_search(itr_obj: list):
-    pre_result = {}
-    for itm in itr_obj:
+# todo f" f' f строка
+ooks_in_list = ["gogo" , "tolsyoy"]
+
+for index in range(len(books_in_list)):
+    print(f"В пакете есть книга {books_in_list[index]} с индексом {index}")
+
+
+
+books_in_list = ["gogo" , "tolsyoy"]
+books_in_list.insert(2, "dfsdfsa")
+#  todo insert вставить
+
+
+# 28,11,2020
+# todo словарь словарю словаря перебор по значению
+dict_some = {
+    "a":2,
+    "b":4,
+    "c":5
+}
+dict_some["добавляем"] = 99
+for key , value in dict_some.items():
+    print(key, value, sep="____разделитель____")
+
+print(dict_some.keys()) # получаем значение ключей
+print(dict_some.values()) # получаем значения
+
+# проверка на да нет в одной строке
+while True:
+    next = input("Добавить ? Да/Нет\n>>")
+    if next.lower() in ("да", "нет"):
+        next = next.lower() == "да"
+        break
+    else:
+        print("Неверный ввод, повторите")
+
+
+# Перебор по словарю добавление в функцию набивка функции
+def directory(**kwargs):
+    print(kwargs)
+    for key, value in kwargs.items():
+        print("{} is {}".format(key, value))
+
+
+directory(name="Deda", surname="Lenya", year="1981", city="Екатеринбург", email="ip66net", tel="0006")
+
+workers = []
+for i in range(0,3):
+    print("index", i)
+
+    worker = {
+    "surname": "Murylev",
+    "age": 39,
+    "covid_test": "True"
+    }
+    workers.append(worker)
+print(workers)
+
+
+books_in_list = ["gogo" , "tolsyoy"]
+books_in_list.insert(2, "dfsdfsa")
+
+
+for index in range(len(books_in_list)):
+    # print(f"В пакете есть книга {books_in_list[index]} с индексом {index}")
+    print(f"{index}")
+
+
+
+# 28,11,2020
+# todo словарь словарю словаря перебор по значению
+dict_some = {
+    "a":2,
+    "b":4,
+    "c":5
+}
+dict_some["добавляем"] = 99
+for key , value in dict_some.items():
+    print(key, value, sep="____разделитель____")
+
+print(dict_some.keys()) # получаем значение ключей
+print(dict_some.values()) # получаем значения
+
+# проверка на да нет в одной строке
+while True:
+    next = input("Добавить ? Да/Нет\n>>")
+    if next.lower() in ("да", "нет"):
+        next = next.lower() == "да"
+        break
+    else:
+        print("Неверный ввод, повторите")
+
+
+# def some_f():
+#     a = 1 + 2
+#     return a
+# print(some_f())
+#
+# def some_f(): # без ретурна не работает
+#     a = 1 + 2
+# print(some_f())
+
+
+def ext_func(var_1):
+    def int_func(var_2):
+        return var_1 + var_2
+    return int_func
+
+f_obj = ext_func(200) # f_obj - функция
+print(f_obj(300))
+
+
+def s_calc():
+    r_val = float(input("Укажите радиус: "))
+    h_val = float(input("Укажите высоту: "))
+    # площадь боковой поверхности цилиндра:
+    s_side = 2 * 3.14 * r_val * h_val
+    # площадь одного основания цилиндра:
+    s_circle = 3.14 * r_val ** 2
+    # полная площадь цилиндра:
+    s_full = s_side + 2 * s_circle
+    return s_full
+
+s_val = s_calc()
+print(s_val)
+
+
+
+some_list =  ['a', 'b', 'c', 'd']
+
+
+def my_enumerate(iter_object, start=0): # рукописная функция enumerate
+    while True:
+        for itm in iter_object:
+            yield start, itm
+            start +=1
+
+# def my_cycle(iter_object):
+#     .....
+
+for idx, value in my_enumerate(some_list, 1):
+    print(idx, value)
+
+"""
+
+# import time
+from time import (
+    sleep,
+    time,
+    # timezone
+)
+import math
+"""
+some_list =  ['a', 'b', 'c', 'd']
+
+
+def my_enumerate(iter_object, start=0): # рукописная функция enumerate
+
+    for itm in iter_object:
+        yield start, itm
+        start +=1
+
+def my_cycle(iter_object):
+    idx = 0
+    while True:
         try:
-            pre_result[''.join(sorted(itm))].append(itm)
-        except KeyError:
-            pre_result[''.join(sorted(itm))] = [itm]
-        return list(pre_result.values())
+            yield iter_object[idx]
+            idx +=1
+        except IndexError:
+            idx = 0
+
+for value in my_cycle(some_list):
+
+    print(value)
+    # time.sleep(.3)
+    sleep(.3)
+
+# документация на функцию, через консоль пайтон
+# import time
+# print(time.sleep.__doc__)
 
 
-test = ['hello', 'dear', 'gb', 'olelh','bg', 'arde']
-# result =[['hello','olelh'], ['dear', 'dear'], ['gb',]]
-res = anagram_search(test)
-print(res)
+
+# todo f" f' f строка
+ooks_in_list = ["gogo" , "tolsyoy"]
+
+for index in range(len(books_in_list)):
+    print(f"В пакете есть книга {books_in_list[index]} с индексом {index}")
 
 
-# todo Генератор словаря списка Романчук !!!!!!!!!!!!!!
-a = [2, 3, 4, 11, 13, 12, 4, 4, 7, 3, 8, 12, 22, 18, 12]
-result = {idx: itm for idx, itm in enumerate(a) if not itm & 1}
-# {idx: - если это убрать, будет 'set'
-print(result)
+
+books_in_list = ["gogo" , "tolsyoy"]
+books_in_list.insert(2, "dfsdfsa")
+#  todo insert вставить
+
+
+# 28,11,2020
+# todo словарь словарю словаря перебор по значению
+dict_some = {
+    "a":2,
+    "b":4,
+    "c":5
+}
+dict_some["добавляем"] = 99
+for key , value in dict_some.items():
+    print(key, value, sep="____разделитель____")
+
+print(dict_some.keys()) # получаем значение ключей
+print(dict_some.values()) # получаем значения
+
+# проверка на да нет в одной строке
+while True:
+    next = input("Добавить ? Да/Нет\n>>")
+    if next.lower() in ("да", "нет"):
+        next = next.lower() == "да"
+        break
+    else:
+        print("Неверный ввод, повторите")
+
+
+# Перебор по словарю добавление в функцию набивка функции
+def directory(**kwargs):
+    print(kwargs)
+    for key, value in kwargs.items():
+        print("{} is {}".format(key, value))
+
+
+directory(name="Deda", surname="Lenya", year="1981", city="Екатеринбург", email="ip66net", tel="0006")
+
+workers = []
+for i in range(0,3):
+    print("index", i)
+
+    worker = {
+    "surname": "Murylev",
+    "age": 39,
+    "covid_test": "True"
+    }
+    workers.append(worker)
+print(workers)
+
+
+books_in_list = ["gogo" , "tolsyoy"]
+books_in_list.insert(2, "dfsdfsa")
+
+
+for index in range(len(books_in_list)):
+    # print(f"В пакете есть книга {books_in_list[index]} с индексом {index}")
+    print(f"{index}")
+
+
+
+# 28,11,2020
+# todo словарь словарю словаря перебор по значению
+dict_some = {
+    "a":2,
+    "b":4,
+    "c":5
+}
+dict_some["добавляем"] = 99
+for key , value in dict_some.items():
+    print(key, value, sep="____разделитель____")
+
+print(dict_some.keys()) # получаем значение ключей
+print(dict_some.values()) # получаем значения
+
+# проверка на да нет в одной строке
+while True:
+    next = input("Добавить ? Да/Нет\n>>")
+    if next.lower() in ("да", "нет"):
+        next = next.lower() == "да"
+        break
+    else:
+        print("Неверный ввод, повторите")
+
+
+# def some_f():
+#     a = 1 + 2
+#     return a
+# print(some_f())
+#
+# def some_f(): # без ретурна не работает
+#     a = 1 + 2
+# print(some_f())
+
+
+def ext_func(var_1):
+    def int_func(var_2):
+        return var_1 + var_2
+    return int_func
+
+f_obj = ext_func(200) # f_obj - функция
+print(f_obj(300))
+
+
+def s_calc():
+    r_val = float(input("Укажите радиус: "))
+    h_val = float(input("Укажите высоту: "))
+    # площадь боковой поверхности цилиндра:
+    s_side = 2 * 3.14 * r_val * h_val
+    # площадь одного основания цилиндра:
+    s_circle = 3.14 * r_val ** 2
+    # полная площадь цилиндра:
+    s_full = s_side + 2 * s_circle
+    return s_full
+
+s_val = s_calc()
+print(s_val)
+
+
+
+some_list =  ['a', 'b', 'c', 'd']
+
+
+def my_enumerate(iter_object, start=0): # рукописная функция enumerate
+    while True:
+        for itm in iter_object:
+            yield start, itm
+            start +=1
+
+# def my_cycle(iter_object):
+#     .....
+
+for idx, value in my_enumerate(some_list, 1):
+    print(idx, value)
+
+
+# import time
+from time import (
+    sleep,
+    time,
+    # timezone
+)
+import math
+
+some_list =  ['a', 'b', 'c', 'd']
+
+
+def my_enumerate(iter_object, start=0): # рукописная функция enumerate
+
+    for itm in iter_object:
+        yield start, itm
+        start +=1
+
+def my_cycle(iter_object):
+    idx = 0
+    while True:
+        try:
+            yield iter_object[idx]
+            idx +=1
+        except IndexError:
+            idx = 0
+
+for value in my_cycle(some_list):
+
+    print(value)
+    # time.sleep(.3)
+    sleep(.3)
+
+# документация на функцию, через консоль пайтон
+# import time
+# print(time.sleep.__doc__)
 
 """
+import requests
+url = 'https://rp5.ru/%D0%9F%D0%BE%D0%B3%D0%BE%D0%B4%D0%B0_%D0%B2_%D0%95%D0%BA%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B1%D1%83%D1%80%D0%B3%D0%B5'
 
-
-"""
-
-# два итератора список счетчик и цикл повторающийся нужное количество раз
-import itertools
-
-
-def start_sinish_number(s, f):
-
-    for el in itertools.count(s):
-        if el > f:
-            break
-        else:
-            print(el)
-
-
-start_sinish_number(3, 10)
-
-
-def count_elem_list(vol):
-
-    count = 0
-    for el in itertools.cycle(['повторяющий', 'элементы', 'некоторого', 'списка', 'определенного', 'заранее']):
-        if count > vol - 1:
-            break
-        print(el)
-        count += 1
-
-
-count_elem_list(10)
-
-"""
-
-############ Обработка исключений try except
-"""
-def division(dividend, divider):
-    return dividend / divider
-
-try:
-    a = int(input())
-    z = int(input())
-    result = division(a, z)
-    print(result)
-except ValueError:
-    print("Вы ввели не число")
-except ZeroDivisionError:
-    print('Второе число не может быть нулем')
-    
-
-
-"""
-
-########################## файлы file ############################################
-
-# это примеры LETPY
-
-# f = open('example.txt')
-# content = f.read()
-# print(content)
-
-def funck_read(f):
-    f = open(f)
-    content = f.read()
-    print(content)
-    return f
-
-funck_read("example.txt")
+response = requests.get(url)
+print(1)
