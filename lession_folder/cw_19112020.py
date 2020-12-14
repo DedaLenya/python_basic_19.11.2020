@@ -1,31 +1,56 @@
-# print("hello world")
-"""
-workers = []
-for i in range(0,3):
-    print("index", i)
+# less6 ООП
 
-    worker = {
-    "surname": "Murylev",
-    "age": 39,
-    "covid_test": "True"
-    }
-    workers.append(worker)
-print(workers)
-"""
-# books_in_list = ["gogo" , "tolsyoy"]
-# books_in_list.insert(2, "dfsdfsa")
-#
-#
-# for index in range(len(books_in_list)):
-#     # print(f"В пакете есть книга {books_in_list[index]} с индексом {index}")
-#     print(f"{index}")
+############################## 1й вариант.
 
+class TrafficLight: # Класс
+    __color = "" # Атрибут
 
-# num = input("введите символ или число")
-# for el in num:
-#     # print("El: ", el)
+    def running(self): # Метод
 
+        self.color = "Красный"
+        print("RED")
+
+        self.color = "Желтый"
+        print("YELL")
+
+        self.color = "Зеленый"
+        print("GREEN")#
+
+a = TrafficLight()
+a.running()
+
+################################ 2й вариант
+
+class TrafficLight: # Класс
+    __color = "" # Атрибут
 
 
+    def running(self, color): # Метод
+        self.color = color
+        print(color)
 
+        return color
+
+a = TrafficLight()
+a.running('RED')
+a.running('YELL')
+a.running('GREEN')
+
+############################### 3й вариант
+
+class TrafficLight: # Класс
+    __color = "" # Атрибут
+
+
+    def __init__(self, color): # Метод
+        self.color = color
+
+red_light = TrafficLight("Зеленый")
+print(red_light.color)
+
+yell_light = TrafficLight("Желтый")
+print(yell_light.color)
+
+green_light = TrafficLight("Красный")
+print(green_light.color)
 
