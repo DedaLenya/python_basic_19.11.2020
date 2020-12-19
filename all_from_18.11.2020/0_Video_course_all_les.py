@@ -2412,9 +2412,42 @@ for value in my_cycle(some_list):
 # import time
 # print(time.sleep.__doc__)
 
-"""
-import requests
-url = 'https://rp5.ru/%D0%9F%D0%BE%D0%B3%D0%BE%D0%B4%D0%B0_%D0%B2_%D0%95%D0%BA%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B1%D1%83%D1%80%D0%B3%D0%B5'
 
-response = requests.get(url)
-print(1)
+
+
+
+
+class Stationery:
+    def __init__(self, title):
+        self.title = title
+
+    def draw(self):
+        return '- Запуск отрисовки'
+
+
+class Pen(Stationery):
+    def draw(self):
+        return f'{super().draw()}'
+
+
+class Pencil(Stationery):
+    def draw(self):
+        return f'{super().draw()}'
+
+
+class Handle(Stationery):
+    def draw(self):
+        return f'{super().draw()}'
+
+
+a = Stationery('Канцелярские пренадлежности')
+pen = Pen('Ручка')
+pencil = Pencil('Карандаш')
+handle = Handle('Маркер')
+print(a.title, a.draw())
+print(pen.title, pen.draw())
+print(pencil.title, pencil.draw())
+print(handle.title, handle.draw())
+
+"""
+
