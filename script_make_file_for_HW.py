@@ -1,7 +1,7 @@
 def make_file_for_HW(num_less, qty_task):
     """Создает в каталоге скрипта структурированые файлы для ДЗ
-    :param qty_task: Количество заданий в текущем уроке
     :param num_less: Номер урока или ДЗ
+    :param qty_task: Количество заданий в текущем уроке
     :return:
     """
     count = 0
@@ -12,4 +12,4 @@ def make_file_for_HW(num_less, qty_task):
     return None
 
 
-make_file_for_HW(6, 5)
+make_file_for_HW(7, 3)
