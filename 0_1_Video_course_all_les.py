@@ -2195,12 +2195,6 @@ for idx, value in my_enumerate(some_list, 1):
 """
 
 # import time
-from time import (
-    sleep,
-    time,
-    # timezone
-)
-import math
 """
 some_list =  ['a', 'b', 'c', 'd']
 
@@ -2449,5 +2443,130 @@ print(pen.title, pen.draw())
 print(pencil.title, pencil.draw())
 print(handle.title, handle.draw())
 
+### банкомат
+
+from datetime import datetime
+import pytz
+
+WHITE = '\033[00M'
+GREEN = '\033[0;92M'
+RED = '\033[1;31M'
+
+
+class Account:
+    def __init__(self, name, balance):
+        self.name = name
+        self.balance = balance
+        self.history = []
+
+    @staticmethod
+    def _get_current_time():
+        return pytz.utc.localize(datetime.utcnow())
+
+    def deposit(self, amount):
+        self.balance += amount
+        self.show_balance()
+        self.history.append([amount, self._get_current_time()])
+
+    def withdraw(self, amount):
+        if self.balance > amount:
+            self.balance -= amount
+            print(f'You spent {amount} units')
+            self.show_balance()
+            self.history.append([-amount, self._get_current_time()])
+
+        else:
+            print('Not enough money')
+            self.show_balance()
+
+    def show_balance(self):
+        print(f'Balance: {self.balance}')
+
+    def show_history(self):
+        for amount, date in self.history:
+            if amount > 0:
+                transaction = 'deposited'
+                color = GREEN
+            else:
+                transaction = 'withdrawn'
+                color = RED
+            print(f'{color} {amount} {WHITE} on {date.astimezone()}')
+
+
+a = Account('Oleg', 0)
+a.deposit(44)
+a.deposit(33)
+a.deposit(66)
+a.withdraw(55)
+a.show_history()
+
+
+################ пример словаря в классе словарь в классе
+class Build:
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+a = Build(some1=2, some3=4)
+print(a.some1)
+
+b = Build(hello=8 , what=4)
+print(b.hello)
+
+
 """
+"""
+########################## паттерны проектирования ООП Сергей романчук урок 8
+class Car:
+    __number = 1
+
+    def __init__(self, model, color, engine):
+        self.model = model
+        self.color = color
+        self.engine = engine
+        self.serial_number = self.__number
+        Car.__number +=1
+
+    def __str__(self):
+        return f'{self.serial_number}: {self.model} {self.engine} {self.color}'
+
+class Factory:
+    def __init__(self, car_cls, **kwargs):
+        self.car_cls = car_cls
+        self.cls_kwargs = kwargs
+
+    def create(self, count, **kwargs):
+        if kwargs:
+            self.cls_kwargs.update(kwargs)
+        return [self.car_cls(**self.cls_kwargs) for _ in range(count)]
+
+    def __call__(self, *args, **kwargs):
+        return self.create(*args, **kwargs)
+
+if __name__=='__main__': # Переменная __name__ - это специальная переменная, которая будет равна "__main__", только если файл запускается как основная программа, и выставляется равной имени модуля при импорте модуля. То есть, условие if __name__ == '__main__' проверяет, был ли файл запущен напрямую.
+    factory = Factory(Car, color='Red', model='Model T', engine='Engine A')
+    cars1=factory.create(10)
+    cars2=factory.create(20, color='White')
+    cars3 = factory.create(10, engine='Engine B', color='Black')
+
+"""
+
+###### анаграммы яндекс задача
+from collections import defaultdict
+List = ['abec', 'aebc', 'cabe', 'ebac', 'bace' ]
+
+
+def anagram(words: List[str]) -> List[List[str]]:
+    result = defaultdict(list)
+    for word in words:
+        result[''.join(sorted(word))].append(word)
+    return list(result.values())
+
+if __name__=='__main__':
+    tests = (
+        {['hel', 'low', 'frog', 'hello', 'lohel', 'hleo', 'leh',], [['hel', 'leh'], ['low'], ['frog'], ['hello', 'lohel', 'hleo']]},
+        {['abec', 'abc', 'aebc', 'cabe', 'ebac'], [['abec', 'aebc', 'cabe', 'ebac', 'bace' ], ['abc']]}
+    )
+    for case, check in tests:
+        assert anagram(case) == check, f'Bad CASE {case}'
+
 
